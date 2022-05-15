@@ -6,6 +6,27 @@
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.photograph-header img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.medias_section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.medias_section .media .media_wrapper > * {
+  width: 300px;
+  height: 300px;
 }
 
 .contact_button {
@@ -29,7 +50,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 35px;
+  padding: 45px;
   margin: auto;
 }
 
@@ -40,10 +61,8 @@
 
 .modal header img {
   cursor: pointer;
-  width: 200px;
-  height: 200px;
+
   border-radius: 50%;
-  object-fit: cover;
 }
 
 .modal header h2 {
