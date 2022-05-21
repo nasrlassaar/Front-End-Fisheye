@@ -11,7 +11,7 @@ async function getMediasOfPhotograph(id) {
   const res = await fetch("data/photographers.json");
   const json = await res.json();
 
-  return [...json.media.filter((med) => med.photographerId === Number(id))];
+  return json.media.filter((med) => med.photographerId === Number(id));
 }
 
 async function displayData(photographer, medias) {
@@ -22,16 +22,26 @@ async function displayData(photographer, medias) {
   // Photograph
 
   const photographerModel = photographerFactory(photographer);
-  const headerLeftDOM = photographerModel.getHeaderLeft();
-  const headerRightDOM = photographerModel.getHeaderRight();
 
-  photographerHeader.insertBefore(headerLeftDOM, contactButton);
-  photographerHeader.appendChild(headerRightDOM);
+  photographerHeader.insertBefore(
+    photographerModel.getHeaderLeft(),
+    contactButton
+  );
+  photographerHeader.appendChild(photographerModel.getHeaderRight());
 
   // Medias
 
   const mediasModel = mediasFactory(medias);
   main.appendChild(mediasModel.getSectionDOM());
+
+  // Info bottomco
+
+  const infoBottom = document.createElement("div");
+  infoBottom.classList.add("info-bottom");
+  infoBottom.appendChild(mediasModel.getTotalLikesDOM());
+  infoBottom.appendChild(photographerModel.getPhotographerPriceDOM());
+
+  main.appendChild(infoBottom);
 }
 
 async function init() {

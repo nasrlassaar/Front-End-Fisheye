@@ -20,23 +20,26 @@ function photographerFactory(data) {
   citation.classList.add("citation");
   citation.textContent = tagline;
 
-  // price
-  const adr = document.createElement("div");
-  adr.classList.add("adr");
-  adr.textContent = price + "€/jour";
-
   function getUserCardDOM() {
     const article = document.createElement("article");
+    article.classList.add("article");
     article.appendChild(img);
     article.appendChild(h2);
     article.appendChild(localisation);
     article.appendChild(citation);
-    article.appendChild(adr);
+    article.appendChild(getPhotographerPriceDOM());
     article.onclick = () => {
       document.location.href = "/photographer.html?id=" + id;
     };
 
     return article;
+  }
+
+  function getPhotographerPriceDOM() {
+    const div = document.createElement("div");
+    div.classList.add("price");
+    div.textContent = price + "€/jour";
+    return div;
   }
 
   function getHeaderLeft() {
@@ -53,5 +56,12 @@ function photographerFactory(data) {
     return div;
   }
 
-  return { name, picture, getUserCardDOM, getHeaderLeft, getHeaderRight };
+  return {
+    name,
+    picture,
+    getUserCardDOM,
+    getPhotographerPriceDOM,
+    getHeaderLeft,
+    getHeaderRight,
+  };
 }

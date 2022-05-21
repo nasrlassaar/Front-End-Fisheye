@@ -5,7 +5,7 @@
 .photograph-header {
   background-color: #fafafa;
   height: 300px;
-  margin: 0 100px;
+  margin: 10 60px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -21,12 +21,37 @@
 .medias_section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .medias_section .media .media_wrapper > * {
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.medias_section .media .bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.medias_section .media .bottom .likes {
+  cursor: pointer;
+}
+
+.medias_section .media .bottom .likes.liked {
+  color: red;
+}
+
+.info-bottom {
+  background: #db8876;
+  position: fixed;
+  right: 40px;
+  bottom: 0;
+  padding: 5px;
+  display: flex;
+  gap: 40px;
 }
 
 .contact_button {

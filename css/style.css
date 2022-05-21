@@ -24,6 +24,11 @@ h1 {
   margin-left: 30px;
 }
 
+.media {
+  text-align: center;
+  position: relative;
+}
+
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -57,6 +62,7 @@ h1 {
 .photographer_section article .localisation {
   color: #901c1c;
 }
+
 .message {
   height: 150px;
 }
