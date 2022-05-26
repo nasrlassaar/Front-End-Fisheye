@@ -2,7 +2,7 @@ function mediasFactory(medias) {
   function getLikesDOM(number) {
     const likesSpan = document.createElement("span");
     likesSpan.classList.add("likes");
-    likesSpan.textContent = number;
+    likesSpan.textContent = number + "      ";
 
     const heartIcon = document.createElement("i");
     heartIcon.classList.add("fas", "fa-solid", "fa-heart");
@@ -64,9 +64,11 @@ function mediasFactory(medias) {
         if (currentLikes === likes) {
           likesDOM.childNodes[0].nodeValue = likes + 1;
           likesDOM.classList.add("liked");
+          console.log(likesDOM);
         } else {
           likesDOM.childNodes[0].nodeValue = likes;
           likesDOM.classList.remove("liked");
+          console.log(likesDOM);
         }
       };
 
@@ -82,6 +84,7 @@ function mediasFactory(medias) {
 
   function getTotalLikesDOM() {
     const total = medias.reduce((total, media) => total + media.likes, 0);
+    console.log(total);
     return getLikesDOM(total);
   }
 

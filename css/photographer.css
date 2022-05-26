@@ -25,10 +25,10 @@
 }
 
 .medias_section .media .media_wrapper > * {
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 300px;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .medias_section .media .bottom {
@@ -36,22 +36,36 @@
   justify-content: space-between;
 }
 
+.medias_section .media .bottom .title {
+  color: #901c1c;
+  margin-left: 10px;
+}
+
 .medias_section .media .bottom .likes {
   cursor: pointer;
+  margin-right: 10px;
 }
 
 .medias_section .media .bottom .likes.liked {
-  color: red;
+  color: #901c1c;
 }
 
 .info-bottom {
   background: #db8876;
   position: fixed;
-  right: 40px;
-  bottom: 0;
+  right: 10px;
+  bottom: 0px;
   padding: 5px;
   display: flex;
-  gap: 40px;
+  gap: 35px;
+  border-radius: 5px;
+}
+
+.texte-textarea {
+  width: 100%;
+  height: 120px;
+  border-radius: 5px;
+  border: none;
 }
 
 .contact_button {
@@ -77,6 +91,10 @@
   justify-content: space-between;
   padding: 45px;
   margin: auto;
+  position: absolute;
+  left: 20%;
+  right: 25%;
+  top: 0%;
 }
 
 .modal header {
