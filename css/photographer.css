@@ -21,7 +21,7 @@
 .medias_section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .medias_section .media .media_wrapper > * {
