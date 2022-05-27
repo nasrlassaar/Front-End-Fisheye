@@ -34,6 +34,7 @@
 .medias_section .media .bottom {
   display: flex;
   justify-content: space-between;
+  padding: 10px;
 }
 
 .medias_section .media .bottom .title {
@@ -44,6 +45,11 @@
 .medias_section .media .bottom .likes {
   cursor: pointer;
   margin-right: 10px;
+  caret-color: transparent;
+}
+
+.medias_section .media .bottom .likes .fa-heart {
+  margin-left: 5px;
 }
 
 .medias_section .media .bottom .likes.liked {
@@ -59,6 +65,11 @@
   display: flex;
   gap: 35px;
   border-radius: 5px;
+}
+
+.info-bottom .likes .fa-heart {
+  margin-left: 5px;
+  caret-color: transparent;
 }
 
 .texte-textarea {
@@ -91,10 +102,16 @@
   justify-content: space-between;
   padding: 45px;
   margin: auto;
-  position: absolute;
+  /*position: absolute;
   left: 20%;
   right: 25%;
   top: 0%;
+  display: block;*/
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 20%;
+  overflow: auto;
 }
 
 .modal header {

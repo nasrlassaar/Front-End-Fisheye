@@ -1,8 +1,11 @@
 function mediasFactory(medias) {
+  let totalLikes = medias.reduce((total, media) => total + media.likes, 0);
+  const totalLikesDOM = getLikesDOM(totalLikes);
+
   function getLikesDOM(number) {
     const likesSpan = document.createElement("span");
     likesSpan.classList.add("likes");
-    likesSpan.textContent = number + "      ";
+    likesSpan.textContent = number;
 
     const heartIcon = document.createElement("i");
     heartIcon.classList.add("fas", "fa-solid", "fa-heart");
@@ -63,13 +66,21 @@ function mediasFactory(medias) {
         const currentLikes = Number(likesDOM.textContent);
         if (currentLikes === likes) {
           likesDOM.childNodes[0].nodeValue = likes + 1;
+          totalLikes += 1;
           likesDOM.classList.add("liked");
-          console.log(likesDOM);
         } else {
           likesDOM.childNodes[0].nodeValue = likes;
           likesDOM.classList.remove("liked");
-          console.log(likesDOM);
+          totalLikes -= 1;
         }
+
+        totalLikesDOM.childNodes[0].nodeValue = totalLikes;
+
+        /*const event = new CustomEvent("likesModification", {
+          detail: { value: valueToAddOnTotal },
+        });
+
+        document.dispatchEvent(event);*/
       };
 
       mediaDivBottom.appendChild(likesDOM);
@@ -83,9 +94,11 @@ function mediasFactory(medias) {
   }
 
   function getTotalLikesDOM() {
-    const total = medias.reduce((total, media) => total + media.likes, 0);
-    console.log(total);
-    return getLikesDOM(total);
+    /*document.addEventListener("likesModification", (event) => {
+      total = total + event.detail.value;
+      likesDOM.childNodes[0].nodeValue = total;
+    });*/
+    return totalLikesDOM;
   }
 
   return { getSectionDOM, getTotalLikesDOM };
