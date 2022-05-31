@@ -1,4 +1,18 @@
+const LIKES = "likes";
+const DATE = "date";
+const TITLE = "title";
+
+const SORT_OPTIONS = [
+  { name: "Popularité", value: "likes" },
+  { name: "Date", value: "date" },
+  { name: "Title", value: "title" },
+];
+
+
 function mediasFactory(medias) {
+  const section = document.createElement("div");
+  section.classList.add("medias_section");
+
   let totalLikes = medias.reduce((total, media) => total + media.likes, 0);
   const totalLikesDOM = getLikesDOM(totalLikes);
 
@@ -14,15 +28,66 @@ function mediasFactory(medias) {
     return likesSpan;
   }
 
-  function getSectionDOM() {
-    const section = document.createElement("div");
-    section.classList.add("medias_section");
+  function getSortSelectDOM() {
+    const selectId = "sort-select";
 
-    medias.forEach((media) => {
-      const { title, image, video, likes } = media;
+    const label = document.createElement("label");
+    label.textContent = "Trier par";
+    label.setAttribute("for", selectId);
+
+    const select = document.createElement("select")
+    select.setAttribute("id", selectId);
+
+    select.onchange = (event) => {
+      sortMediasBy(event.target.value);
+    }
+
+    for (const opt of SORT_OPTIONS) {
+      const option = document.createElement("option");
+      option.textContent = opt.name;
+      option.setAttribute("value", opt.value);
+
+      select.appendChild(option);
+    }
+
+    const div = document.createElement("div");
+    div.setAttribute("class", "sort-select-wrapper");
+    div.appendChild(label);
+    div.appendChild(select);
+
+    return div;
+  }
+
+  function getMediaFromDiv(element) {
+    const mediaId = Number(element.getAttribute("data-id"));
+    return medias.find(media => media.id === mediaId);
+  }
+
+  function sortMediasBy(prop) {    
+    [...section.children]
+      .sort((elementA, elementB) => {
+        const mediaA = getMediaFromDiv(elementA);
+        const mediaB = getMediaFromDiv(elementB);
+
+        if (prop === LIKES) {
+          return mediaB.likes - mediaA.likes;
+        } else if (prop === DATE) {
+          return mediaB.date.localeCompare(mediaA.date);
+        }
+        return mediaA.title.localeCompare(mediaB.title);
+      })
+      .forEach(element => section.appendChild(element));
+  }
+
+  function getSectionDOM() {
+    const mediaSortedByLikes = medias.sort((a, b) => b.likes - a.likes);
+
+    mediaSortedByLikes.forEach((media) => {
+      const { id, title, image, video, likes } = media;
 
       const mediaDiv = document.createElement("div");
-      mediaDiv.classList.add("media");
+      mediaDiv.setAttribute("class", "media");
+      mediaDiv.setAttribute("data-id", id);
 
       // Image / Video
       const mediaWrapper = document.createElement("div");
@@ -101,5 +166,5 @@ function mediasFactory(medias) {
     return totalLikesDOM;
   }
 
-  return { getSectionDOM, getTotalLikesDOM };
+  return { getSectionDOM, getTotalLikesDOM, getSortSelectDOM };
 }

@@ -32,6 +32,7 @@ async function displayData(photographer, medias) {
   // Medias
 
   const mediasModel = mediasFactory(medias);
+  main.appendChild(mediasModel.getSortSelectDOM());
   main.appendChild(mediasModel.getSectionDOM());
 
   // Info bottomco
