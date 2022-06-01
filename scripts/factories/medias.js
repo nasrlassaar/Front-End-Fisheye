@@ -5,9 +5,8 @@ const TITLE = "title";
 const SORT_OPTIONS = [
   { name: "Popularité", value: "likes" },
   { name: "Date", value: "date" },
-  { name: "Title", value: "title" },
+  { name: "Titre", value: "title" },
 ];
-
 
 function mediasFactory(medias) {
   const section = document.createElement("div");
@@ -28,6 +27,7 @@ function mediasFactory(medias) {
     return likesSpan;
   }
 
+  //fonction des filtres
   function getSortSelectDOM() {
     const selectId = "sort-select";
 
@@ -35,12 +35,12 @@ function mediasFactory(medias) {
     label.textContent = "Trier par";
     label.setAttribute("for", selectId);
 
-    const select = document.createElement("select")
+    const select = document.createElement("select");
     select.setAttribute("id", selectId);
 
     select.onchange = (event) => {
       sortMediasBy(event.target.value);
-    }
+    };
 
     for (const opt of SORT_OPTIONS) {
       const option = document.createElement("option");
@@ -60,10 +60,10 @@ function mediasFactory(medias) {
 
   function getMediaFromDiv(element) {
     const mediaId = Number(element.getAttribute("data-id"));
-    return medias.find(media => media.id === mediaId);
+    return medias.find((media) => media.id === mediaId);
   }
 
-  function sortMediasBy(prop) {    
+  function sortMediasBy(prop) {
     [...section.children]
       .sort((elementA, elementB) => {
         const mediaA = getMediaFromDiv(elementA);
@@ -76,7 +76,7 @@ function mediasFactory(medias) {
         }
         return mediaA.title.localeCompare(mediaB.title);
       })
-      .forEach(element => section.appendChild(element));
+      .forEach((element) => section.appendChild(element));
   }
 
   function getSectionDOM() {
@@ -140,12 +140,6 @@ function mediasFactory(medias) {
         }
 
         totalLikesDOM.childNodes[0].nodeValue = totalLikes;
-
-        /*const event = new CustomEvent("likesModification", {
-          detail: { value: valueToAddOnTotal },
-        });
-
-        document.dispatchEvent(event);*/
       };
 
       mediaDivBottom.appendChild(likesDOM);
@@ -159,10 +153,6 @@ function mediasFactory(medias) {
   }
 
   function getTotalLikesDOM() {
-    /*document.addEventListener("likesModification", (event) => {
-      total = total + event.detail.value;
-      likesDOM.childNodes[0].nodeValue = total;
-    });*/
     return totalLikesDOM;
   }
 
