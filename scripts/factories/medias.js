@@ -3,9 +3,9 @@ const DATE = "date";
 const TITLE = "title";
 
 const SORT_OPTIONS = [
-  { name: "Popularité", value: "likes" },
-  { name: "Date", value: "date" },
-  { name: "Titre", value: "title" },
+  { name: "Popularité", value: LIKES },
+  { name: "Date", value: DATE },
+  { name: "Titre", value: TITLE },
 ];
 
 function mediasFactory(medias) {
@@ -113,6 +113,11 @@ function mediasFactory(medias) {
 
         mediaWrapper.appendChild(videoDOM);
       }
+
+      mediaWrapper.onclick = () => {
+        displayCarrousel(mediaDiv);
+      };
+
       mediaDiv.appendChild(mediaWrapper);
 
       const mediaDivBottom = document.createElement("div");

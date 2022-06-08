@@ -62,3 +62,64 @@ h1 {
 .photographer_section article .localisation {
   color: #901c1c;
 }
+
+.photograph-header h2 {
+  font-family: DM Sans;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 83px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #d3573c;
+}
+
+.photograph-header .localisation {
+  font-family: DM Sans;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 31px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #901c1c;
+}
+
+.sort-select-wrapper {
+  margin-bottom: 20px;
+}
+
+.photograph-header .citation {
+  font-family: DM Sans;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #525252;
+}
+
+.sort-select-wrapper label {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 23px;
+  color: #000000;
+  font-family: "DM Sans";
+  font-style: normal;
+  margin-right: 12px;
+}
+
+select {
+  background-color: #901c1c;
+  width: 170px;
+  color: #ffffff;
+  height: 39px;
+  font-weight: 700;
+  font-family: "DM Sans";
+  border-radius: 5px;
+  font-size: 18px;
+  font-style: normal;
+}
+
+.fa,
+.fas {
+  color: #911c1c;
+}

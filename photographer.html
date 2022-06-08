@@ -25,11 +25,11 @@
         </button>
       </div>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" aria-hidden="true" role="dialog">
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg " ; onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
         <form>
           <div>
@@ -46,9 +46,22 @@
         </form>
       </div>
     </div>
+    <div id="medias_modal" aria-hidden="true" role="dialog">
+      <button class="close_btn" onclick="closeCarrousel()">
+        <i class="fas fa-solid fa-times"></i>
+      </button>
+      <button class="arrow_btn left_btn">
+        <i class="fas fa-solid fa-angle-left"></i>
+      </button>
+      <div class="media_content">MEDIA</div>
+      <button class="arrow_btn right_btn">
+        <i class="fas fa-solid fa-angle-right"></i>
+      </button>
+    </div>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/medias.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/mediasCarrousel.js"></script>
   </body>
 </html>
